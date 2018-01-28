@@ -379,6 +379,7 @@ public class MaterialTapTargetPrompt
     {
         if (isComplete())
         {
+            mView.mPromptOptions.onPromptNext();
             return;
         }
         onPromptStateChanged(STATE_DISMISSING);
@@ -401,6 +402,7 @@ public class MaterialTapTargetPrompt
             public void onAnimationEnd(Animator animation)
             {
                 cleanUpPrompt(STATE_DISMISSED);
+                mView.mPromptOptions.onPromptNext();
             }
         });
         mAnimationCurrent.start();
@@ -974,6 +976,14 @@ public class MaterialTapTargetPrompt
          *               {@link #STATE_DISMISSED}
          */
         void onPromptStateChanged(@NonNull final MaterialTapTargetPrompt prompt, final int state);
+    }
+
+    public interface PromptNextListener
+    {
+        /**
+         * Called when the prompt is dismissed
+         */
+        void onPromptNext();
     }
 
     static class AnimatorListener implements Animator.AnimatorListener

@@ -153,6 +153,8 @@ public class PromptOptions<T extends PromptOptions>
      */
     @Nullable private MaterialTapTargetPrompt.PromptStateChangeListener mPromptStateChangeListener;
 
+    @Nullable private MaterialTapTargetPrompt.PromptNextListener mPromptNextListener;
+
     private boolean mCaptureTouchEventOnFocal;
     private float mTextSeparation;
     private boolean mAutoDismiss = true;
@@ -936,6 +938,31 @@ public class PromptOptions<T extends PromptOptions>
         mIconDrawableTintList = null;
         mHasIconDrawableTint = true;
         return (T) this;
+    }
+
+    /**
+     * Set the listener to listen for when the prompt is dismissed and the next prompt should be shown
+     *
+     * @param listener The listener to use
+     * @return This Builder object to allow for chaining of calls to set methods
+     */
+    @NonNull
+    protected T setPromptNextListener(
+            @Nullable final MaterialTapTargetPrompt.PromptNextListener listener)
+    {
+        mPromptNextListener = listener;
+        return (T) this;
+    }
+
+    /**
+     * Handles emitting the next event
+     */
+    public void onPromptNext()
+    {
+        if (mPromptNextListener != null)
+        {
+            mPromptNextListener.onPromptNext();
+        }
     }
 
     /**
