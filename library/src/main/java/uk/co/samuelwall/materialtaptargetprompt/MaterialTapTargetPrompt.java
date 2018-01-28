@@ -34,6 +34,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -54,6 +55,8 @@ import uk.co.samuelwall.materialtaptargetprompt.extras.PromptOptions;
  */
 public class MaterialTapTargetPrompt
 {
+
+    public static final String TAG = MaterialTapTargetPrompt.class.getSimpleName();
 
     /**
      * Prompt has yet to be shown.
@@ -377,8 +380,10 @@ public class MaterialTapTargetPrompt
      */
     public void dismiss()
     {
+        Log.e(TAG, "TapTargetPrompt: Dismiss is called");
         if (isComplete())
         {
+            Log.e(TAG, "TapTargetPrompt: is complete is called");
             mView.mPromptOptions.onPromptNext();
             return;
         }
@@ -401,6 +406,7 @@ public class MaterialTapTargetPrompt
             @Override
             public void onAnimationEnd(Animator animation)
             {
+                Log.e(TAG, "TapTargetPrompt: Animation ended");
                 cleanUpPrompt(STATE_DISMISSED);
                 mView.mPromptOptions.onPromptNext();
             }

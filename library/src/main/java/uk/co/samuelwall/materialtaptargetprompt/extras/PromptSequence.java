@@ -1,5 +1,7 @@
 package uk.co.samuelwall.materialtaptargetprompt.extras;
 
+import android.util.Log;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -10,6 +12,9 @@ import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
  */
 public class PromptSequence
 {
+
+    public static final String TAG = PromptSequence.class.getSimpleName();
+
     /**
      * The queue of prompts to be shown
      */
@@ -25,6 +30,9 @@ public class PromptSequence
      */
     public void start()
     {
+
+        Log.e(TAG, "TapTargetPrompt Sequence: queue is " + promptList);
+
         final MaterialTapTargetPrompt.Builder prompt = promptList.poll();
 
         if (prompt != null)
