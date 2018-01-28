@@ -947,7 +947,7 @@ public class PromptOptions<T extends PromptOptions>
      * @return This Builder object to allow for chaining of calls to set methods
      */
     @NonNull
-    protected T setPromptNextListener(
+    public T setPromptNextListener(
             @Nullable final MaterialTapTargetPrompt.PromptNextListener listener)
     {
         mPromptNextListener = listener;
