@@ -368,6 +368,7 @@ public class MaterialTapTargetPrompt
             public void onAnimationEnd(Animator animation)
             {
                 cleanUpPrompt(STATE_FINISHED);
+                mView.mPromptOptions.onPromptNext();
             }
         });
         mAnimationCurrent.start();
@@ -404,6 +405,7 @@ public class MaterialTapTargetPrompt
             public void onAnimationEnd(Animator animation)
             {
                 cleanUpPrompt(STATE_DISMISSED);
+                mView.mPromptOptions.onPromptNext();
             }
         });
         mAnimationCurrent.start();
@@ -784,7 +786,6 @@ public class MaterialTapTargetPrompt
                     mPromptTouchedListener.onNonFocalPressed();
                 }
             }
-            mPromptOptions.onPromptNext();
             return captureEvent;
         }
 
