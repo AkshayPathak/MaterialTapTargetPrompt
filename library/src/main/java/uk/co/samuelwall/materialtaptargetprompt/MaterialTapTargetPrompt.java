@@ -380,11 +380,8 @@ public class MaterialTapTargetPrompt
      */
     public void dismiss()
     {
-        Log.e(TAG, "TapTargetPrompt: Dismiss is called");
         if (isComplete())
         {
-            Log.e(TAG, "TapTargetPrompt: is complete is called");
-            mView.mPromptOptions.onPromptNext();
             return;
         }
         onPromptStateChanged(STATE_DISMISSING);
@@ -406,9 +403,7 @@ public class MaterialTapTargetPrompt
             @Override
             public void onAnimationEnd(Animator animation)
             {
-                Log.e(TAG, "TapTargetPrompt: Animation ended");
                 cleanUpPrompt(STATE_DISMISSED);
-                mView.mPromptOptions.onPromptNext();
             }
         });
         mAnimationCurrent.start();
@@ -789,6 +784,7 @@ public class MaterialTapTargetPrompt
                     mPromptTouchedListener.onNonFocalPressed();
                 }
             }
+            mPromptOptions.onPromptNext();
             return captureEvent;
         }
 
