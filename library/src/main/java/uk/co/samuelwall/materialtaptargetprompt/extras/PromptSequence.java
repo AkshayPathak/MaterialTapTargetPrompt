@@ -22,7 +22,7 @@ public class PromptSequence
 
     public PromptSequence(LinkedList<MaterialTapTargetPrompt.Builder> promptList)
     {
-        this.promptList = this.promptList;
+        this.promptList = promptList;
     }
 
     /**
